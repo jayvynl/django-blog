@@ -1,0 +1,45 @@
+{% load i18n %}
+<!DOCTYPE html>
+<html lang="{{ LANGUAGE_CODE_SHORT }}">
+    <head>
+        <meta charset="utf-8">
+        <title>{% block title %}{% endblock %}</title>
+        <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+    </head>
+    <body>
+        <header>
+            <h1>{{ site_name }}</h1>
+            <div id="login-area">
+            {% if user.is_authenticated %}
+                <a href="{% url 'users:personal-profile' %}">{{ user.username }}</a>
+                <a href="{% url 'users:logout' %}">{% translate 'logout' %}</a>
+            {% else %}
+                <a href="{% url 'users:login' %}">{% translate 'login' %}</a>
+                <a href="{% url 'users:register' %}">{% translate 'register' %}</a>
+            {% endif %}
+            </div>
+        </header>
+        <nav>
+            <ul>
+                <li><a href="">{% translate 'Home' %}</a></li>
+                <li><a href="{% url 'articles:' %}">{% translate 'Articles' %}</a></li>
+                <li><a href="{% url 'articles:tag' %}">{% translate 'Tags' %}</a></li>
+                <li><a href="{% url 'articles:archive' %}">{% translate 'Archives' %}</a></li>
+                <li><a href="{% url 'about_me' %}">{% translate 'About me' %}</a></li>
+            </ul>
+            <form method="get" action="{% url 'articles:search' %}">
+                <label>
+                    <input type="search" name="q" placeholder="{% translate 'Input key words here' %}">
+                </label>
+                <input type="submit" value="{% translate 'Go!' %}">
+            </form>
+        </nav>
+        <main>
+            {% block content %}{% endblock %}
+        </main>
+        <footer>
+            <p>{% translate '©Copyright 2050 by nobody. All rights reversed.' %}</p>
+            <p><a href="{{ site_register_url }}">{{ site_register }}</a></p>
+        </footer>
+    </body>
+</html>
