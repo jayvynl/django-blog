@@ -37,13 +37,15 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'users',
-    'shares'
+    'user',
+    'share',
+    'article',
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -56,7 +58,7 @@ ROOT_URLCONF = 'blog.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ['templates'],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': False,
         'OPTIONS': {
             'context_processors': [
@@ -64,8 +66,10 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                'shares.context_processors.website_information'
-
+                'django.template.context_processors.tz',
+                'django.template.context_processors.i18n',
+                'share.context_processors.website_information',
+                'share.context_processors.timezones',
             ],
         },
     },
@@ -107,7 +111,12 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/3.0/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGES = (
+    ('en', 'English'),
+    ('zh', 'Chinese')
+)
+
+LANGUAGE_CODE = 'zh-hans'
 
 TIME_ZONE = 'Asia/Shanghai'
 
@@ -122,5 +131,18 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
-LOGIN_REDIRECT_URL = 'users:personal-profile'
+LOGIN_REDIRECT_URL = 'user:personal-profile'
+
+
+# Project specific settings
+
+TIMEZONES = [
+    'Etc/GMT+12', 'Pacific/Pago_Pago', 'Pacific/Honolulu', 'America/Juneau',
+    'America/Los_Angeles', 'America/Phoenix', 'America/Chicago', 'America/New_York',
+    'America/Santiago', 'America/Sao_Paulo', 'Atlantic/South_Georgia', 'America/Scoresbysund',
+    'Europe/London', 'Europe/Paris', 'Africa/Cairo', 'Europe/Moscow', 'Asia/Dubai',
+    'Indian/Maldives', 'Asia/Urumqi', 'Asia/Bangkok', 'Asia/Shanghai',
+    'Asia/Tokyo', 'Australia/Sydney', 'Asia/Sakhalin', 'Pacific/Auckland'
+]

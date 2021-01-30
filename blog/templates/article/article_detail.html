@@ -1,9 +1,10 @@
 {% extends "base.html" %}
 
-{% load i18n %}
+{% load i18n tz %}
+
+{% block title %}{{ article.title }}{% endblock %}
 
 {% block content %}
-{% for article in articles %}
 <article>
     <header class="article-title">
         <h2>{{ article.title }}</h2>
@@ -20,14 +21,18 @@
                     {{ article.edited_at|localtime }}
                 </time>
             </span>
+            <span class="article-tags">
+                {% translate 'tags' %}
+                {% for tag in article.tags.all %}
+                <ul>
+                    <li><a href="{% url 'article:tag' pk=tag.pk %}">{{ tag.name }}</a></li>
+                </ul>
+                {% endfor %}
+            </span>
         </div>
     </header>
-    <main class="article-content-brief">
-        <p>{{ article.content_brief }}</p>
+    <main class="article-content">
+        <p>{{ article.content|safe }}</p>
     </main>
-    <div class="read-more">
-        <a href="{% url 'article:detail' pk=article.pk %}">{% translate 'Read more' %}</a>
-    </div>
 </article>
-{% endfor %}
 {% endblock %}

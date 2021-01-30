@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block title %}{% translate 'Tags' %}{% endblock %}
+
+{% block content %}
+    <div id="tag-list">
+    {% for tag in tags %}
+        <span class="tag-item">
+            <a href="{% url 'article:tag-detail' pk=tag.id %}">{{ tag.name }}</a>({{ tag.articles.count }})
+        </span>
+    {% endfor %}
+    </div>
+{% endblock %}
