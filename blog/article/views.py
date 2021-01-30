@@ -26,15 +26,21 @@ class TagDetail(generic.ListView):
 
     def get_queryset(self):
         try:
-            self.tag = models.Tag.objects.get(pk=self.kwargs['pk'])
+            tag = models.Tag.objects.get(pk=self.kwargs['pk'])
+            self.extra_context = {'tag': tag}
         except models.Tag.DoesNotExist:
             raise Http404
-        self.queryset = self.tag.articles.all()
+        self.queryset = tag.articles.all()
         return super().get_queryset()
 
-    def get_context_data(self, *, object_list=None, **kwargs):
-        data = super(TagDetail, self).get_context_data(object_list=object_list, **kwargs)
-        data.update(
-            tag=self.tag
-        )
-        return data
+
+class ArchiveIndex(generic.ArchiveIndexView):
+    model = models.Article
+    context_object_name = 'articles'
+    # paginate_by = 20
+
+
+class YearArchive(generic.YearArchiveView):
+    model = models.Article
+    context_object_name = 'articles'
+    paginate_by = 20

@@ -1,6 +1,3 @@
-from .models import SiteInformation
-
-
 _site_information = {}
 
 
@@ -15,6 +12,7 @@ def set_site_information(**kwargs):
 
 
 def load_site_information():
+    from .models import SiteInformation
     site_info_model_instance = SiteInformation.objects.get_or_create(id=1)
     site_info = {
         'site_name': site_info_model_instance.name,
