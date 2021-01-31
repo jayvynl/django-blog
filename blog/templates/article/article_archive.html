@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% load i18n tz %}
+
+{% block title %}{% translate 'Archives' %}{% endblock %}
+
+{% block content %}
+    <div id="archive-index">
+    {% for date in date_list %}
+        <span class="archive-item">
+            <a href="{% url 'article:year-archive' year=date.year %}">{{ date|localtime }}</a>
+        </span>
+    {% endfor %}
+    </div>
+{% endblock %}

@@ -1,0 +1,213 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-01-31 20:11+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: .\article\models.py:8
+msgid "title"
+msgstr "标题"
+
+#: .\article\models.py:9
+msgid "posted at"
+msgstr "发表"
+
+#: .\article\models.py:10
+msgid "edited at"
+msgstr "编辑"
+
+#: .\article\models.py:11 .\article\models.py:37
+#: .\templates\article\article_detail.html:25
+msgid "tags"
+msgstr "标签"
+
+#: .\article\models.py:12 .\share\models.py:20
+msgid "markdown content"
+msgstr "markdown内容"
+
+#: .\article\models.py:13 .\share\models.py:21
+msgid "html content"
+msgstr "html内容"
+
+#: .\article\models.py:16
+msgid "article"
+msgstr "文章"
+
+#: .\article\models.py:17
+msgid "articles"
+msgstr "文章"
+
+#: .\article\models.py:27 .\share\models.py:11
+msgid "name"
+msgstr "名称"
+
+#: .\article\models.py:31
+msgid "A tag with that name already exists."
+msgstr "这个名称的标签已经存在。"
+
+#: .\article\models.py:36
+msgid "tag"
+msgstr "标签"
+
+#: .\share\models.py:11
+msgid "My site"
+msgstr "我的网站"
+
+#: .\share\models.py:12
+msgid "register"
+msgstr "备案"
+
+#: .\share\models.py:12
+msgid "Not registered"
+msgstr "未备案"
+
+#: .\share\models.py:13
+msgid "register url"
+msgstr "备案地址"
+
+#: .\share\models.py:16
+msgid "site information"
+msgstr "网站信息"
+
+#: .\templates\about_me.html:5 .\templates\base.html:58
+msgid "About me"
+msgstr "关于我"
+
+#: .\templates\article\article_archive.html:5
+#: .\templates\article\article_year_archive.html:5 .\templates\base.html:57
+msgid "Archives"
+msgstr "归档"
+
+#: .\templates\article\article_detail.html:13 .\templates\index.html:12
+msgid "post at"
+msgstr "发表"
+
+#: .\templates\article\article_detail.html:19 .\templates\index.html:18
+msgid "edit at"
+msgstr "编辑"
+
+#: .\templates\article\article_list.html:5
+#: .\templates\article\article_year_archive.html:8 .\templates\base.html:55
+msgid "Articles"
+msgstr "文章"
+
+#: .\templates\article\article_list.html:23
+#: .\templates\article\article_year_archive.html:24
+#: .\templates\article\search.html:24 .\templates\article\tag_detail.html:24
+msgid "First"
+msgstr "首页"
+
+#: .\templates\article\article_list.html:45
+#: .\templates\article\article_year_archive.html:46
+#: .\templates\article\search.html:46 .\templates\article\tag_detail.html:46
+msgid "Last"
+msgstr "尾页"
+
+#: .\templates\article\search.html:5
+msgid "Search results: "
+msgstr "搜索结果"
+
+#: .\templates\article\tag_list.html:4 .\templates\base.html:56
+msgid "Tags"
+msgstr "标签"
+
+#: .\templates\base.html:19
+msgid "Language:"
+msgstr "语言："
+
+#: .\templates\base.html:28 .\templates\base.html:39
+msgid "Set"
+msgstr "设置"
+
+#: .\templates\base.html:33
+msgid "Time zone:"
+msgstr "时区："
+
+#: .\templates\base.html:54
+msgid "Home"
+msgstr "博客"
+
+#: .\templates\base.html:62
+msgid "Input key words here"
+msgstr "此处输入关键词"
+
+#: .\templates\base.html:64
+msgid "Go!"
+msgstr "搜索"
+
+#: .\templates\index.html:29
+msgid "Read more"
+msgstr "阅读详情"
+
+#: .\user\models.py:52
+msgid "username"
+msgstr "用户名"
+
+#: .\user\models.py:55
+msgid "Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only."
+msgstr "必填，150字符以内，文字数字或符号（@/./+/-/_）"
+
+#: .\user\models.py:58
+msgid "A user with that username already exists."
+msgstr "这个名字的用户已经存在。"
+
+#: .\user\models.py:62
+msgid "email address"
+msgstr "电子邮箱地址"
+
+#: .\user\models.py:65
+msgid "This email address has already been registered."
+msgstr "这个电子邮箱已经被注册。"
+
+#: .\user\models.py:69
+msgid "active"
+msgstr "归档"
+
+#: .\user\models.py:72
+msgid ""
+"Designates whether this user should be treated as active. Unselect this "
+"instead of deleting accounts."
+msgstr "这个用户是否处于活动状态。可以取消选中该选项替代删除该用户。"
+
+#: .\user\models.py:77
+msgid "activation status"
+msgstr "激活状态"
+
+#: .\user\models.py:79
+msgid "Designates whether this user should be treated as activated. "
+msgstr "这个用户是否处于激活状态。"
+
+#: .\user\models.py:82
+msgid "superuser status"
+msgstr "超级用户状态"
+
+#: .\user\models.py:85
+msgid ""
+"Designates that this user has all permissions without explicitly assigning "
+"them."
+msgstr "这个用户是否具有所有权限。"
+
+#: .\user\models.py:89
+msgid "date joined"
+msgstr "注册日期"
+
+#: .\user\models.py:97
+msgid "user"
+msgstr "用户"
+
+#: .\user\models.py:98
+msgid "users"
+msgstr "用户"

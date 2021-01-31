@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% load i18n %}
+
+{% block title %}{% translate 'About me' %}{% endblock %}
+
+{% block content %}
+<div class="article-content">
+{% if personal_info %}
+    {{ personal_info.content_html|safe }}
+{% endif %}
+</div>
+{% endblock %}
