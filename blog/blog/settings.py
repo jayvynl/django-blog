@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'markdownx',
     'user',
     'share',
     'article',
@@ -113,7 +114,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGES = (
     ('en', 'English'),
-    ('zh', 'Chinese')
+    ('zh-hans', 'Chinese')
 )
 
 LANGUAGE_CODE = 'zh-hans'
@@ -126,6 +127,8 @@ USE_L10N = True
 
 USE_TZ = True
 
+LOCALE_PATHS = [os.path.join(BASE_DIR, 'locale')]
+
 DATE_FORMAT = 'Y-m-d'
 DATETIME_FORMAT = 'Y-m-d H:i'
 SHORT_DATE_FORMAT = 'Y-m-d'
@@ -136,8 +139,20 @@ SHORT_DATETIME_FORMAT = 'Y-m-d H:i'
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'statics')
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static')
+]
 
 LOGIN_REDIRECT_URL = 'user:personal-profile'
+
+
+# Markdownx
+# https://neutronx.github.io/django-markdownx/customization/
+
+MARKDOWNX_MARKDOWN_EXTENSIONS = [
+    'markdown.extensions.extra',
+    'markdown.extensions.codehilite',
+]
 
 
 # Project specific settings

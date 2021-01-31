@@ -1,10 +1,10 @@
 {% extends "base.html" %}
 
-{% load i18n %}
+{% load i18n tz %}
 
 {% block content %}
 {% for article in articles %}
-<article>
+<article class="article">
     <header class="article-title">
         <h2>{{ article.title }}</h2>
         <div class="article-meta">
@@ -22,8 +22,8 @@
             </span>
         </div>
     </header>
-    <main class="article-content-brief">
-        <p>{{ article.content_brief }}</p>
+    <main class="article-content article-content-brief">
+        <p>{{ article.content_html|safe }}</p>
     </main>
     <div class="read-more">
         <a href="{% url 'article:detail' pk=article.pk %}">{% translate 'Read more' %}</a>

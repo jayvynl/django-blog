@@ -1,6 +1,7 @@
 from django.shortcuts import redirect
 from django.views import generic
-from article import models
+from article.models import Article
+from share.models import PersonalInfo
 
 
 def set_timezone(request):
@@ -11,6 +12,17 @@ def set_timezone(request):
 
 
 class Index(generic.ListView):
-    model = models.Article.objects.all()[:10]
+    queryset = Article.objects.all()[:10]
     context_object_name = 'articles'
     template_name = 'index.html'
+
+
+class AboutMe(generic.DetailView):
+    template_name = 'about_me.html'
+    context_object_name = 'personal_info'
+
+    def get_object(self, queryset=None):
+        try:
+            return PersonalInfo.objects.first()
+        except PersonalInfo.DoesNotExist:
+            return None

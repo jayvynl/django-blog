@@ -16,14 +16,16 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
-from share.views import set_timezone, Index
+from share.views import set_timezone, Index, AboutMe
 from django.views.i18n import set_language
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', Index.as_view(), name='index'),
+    path('aubou_me/', AboutMe.as_view(), name='about-me'),
     path('settz/', set_timezone, name='set_timezone'),
     path('setlang/', set_language, name='set_language'),
     path('article/', include('article.urls')),
+    path('markdownx', include('markdownx.urls'))
 ]

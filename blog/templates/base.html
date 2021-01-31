@@ -6,12 +6,14 @@
         <meta charset="utf-8">
         <title>{% block title %}{{ site_name }}{% endblock %}</title>
         <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'css/markdown.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'css/codehilite.css' %}">
     </head>
     <body>
-        <header>
-            <h1>{{ site_name }}</h1>
+        <header id="header">
+            <h1 id="site-name">{{ site_name }}</h1>
 
-            <form action="{% url 'set_language' %}" method="post">
+            <form id="set-lan" action="{% url 'set_language' %}" method="post">
                 {% csrf_token %}
                 <input name="next" type="hidden" value="{{ request.path }}">
                 <label for="language">{% translate 'Language:' %}</label>
@@ -25,7 +27,7 @@
                 </select>
                 <input type="submit" value="{% translate 'Set' %}">
             </form>
-            <form action="{% url 'set_timezone' %}" method="POST">
+            <form id="set-tz" action="{% url 'set_timezone' %}" method="POST">
                 {% csrf_token %}
                 <input name="next" type="hidden" value="{{ request.path }}">
                 <label for="timezone">{% translate 'Time zone:' %}</label>
@@ -47,26 +49,26 @@
 {#            {% endif %}#}
 {#            </div>#}
         </header>
-        <nav>
+        <nav id="nav">
             <ul>
                 <li><a href="/">{% translate 'Home' %}</a></li>
                 <li><a href="{% url 'article:list' %}">{% translate 'Articles' %}</a></li>
                 <li><a href="{% url 'article:tag-list' %}">{% translate 'Tags' %}</a></li>
                 <li><a href="{% url 'article:archive' %}">{% translate 'Archives' %}</a></li>
-                <li><a href="{% url 'about_me' %}">{% translate 'About me' %}</a></li>
+                <li><a href="{% url 'about-me' %}">{% translate 'About me' %}</a></li>
             </ul>
-            <form method="get" action="{% url 'articles:search' %}">
+            <form method="get" action="{% url 'article:search' %}">
                 <label>
                     <input type="search" name="q" placeholder="{% translate 'Input key words here' %}">
                 </label>
                 <input type="submit" value="{% translate 'Go!' %}">
             </form>
         </nav>
-        <main>
+        <main id="main">
             {% block content %}{% endblock %}
         </main>
-        <footer>
-            <p>{% translate '©Copyright 2050 by nobody. All rights reserved.' %}</p>
+        <footer id="footer">
+            <p>'©Copyright 2021-{% now 'Y' %} {{ site_name }}.</p>
             <p><a href="{{ site_register_url }}">{{ site_register }}</a></p>
         </footer>
     </body>

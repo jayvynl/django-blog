@@ -1,6 +1,9 @@
-from django.views import generic
-from article import models
 from django.http import Http404
+from django.views import generic
+from django.db.models import Q
+from article import models
+
+from django.shortcuts import redirect
 
 
 class ArticleList(generic.ListView):
@@ -44,3 +47,21 @@ class YearArchive(generic.YearArchiveView):
     model = models.Article
     context_object_name = 'articles'
     paginate_by = 20
+
+
+class Search(generic.ListView):
+    model = models.Article
+    context_object_name = 'articles'
+    paginate_by = 20
+
+    def get_queryset(self):
+        qs = super(Search, self).get_queryset()
+        search = self.request.GET.get('q', '').strip()
+        if search:
+            qs = qs.filter(
+                Q(title__icontains=search) |
+                Q(content__icontains=search) |
+                Q(tag__name__icontains=search)
+            ).distinct()
+        self.extra_context = {'search': search}
+        return qs

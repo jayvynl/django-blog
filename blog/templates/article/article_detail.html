@@ -5,7 +5,7 @@
 {% block title %}{{ article.title }}{% endblock %}
 
 {% block content %}
-<article>
+<article class="article">
     <header class="article-title">
         <h2>{{ article.title }}</h2>
         <div class="article-meta">
@@ -32,7 +32,7 @@
         </div>
     </header>
     <main class="article-content">
-        <p>{{ article.content|safe }}</p>
+        {{ article.content_html|safe }}
     </main>
 </article>
 {% endblock %}

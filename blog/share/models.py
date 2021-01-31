@@ -1,6 +1,8 @@
 from django.db import models
 from django.db.models.signals import post_save
 from django.utils.translation import gettext_lazy as _
+from markdownx.models import MarkdownxField
+from markdownx.utils import markdownify
 
 from share.cached import set_site_information
 
@@ -12,6 +14,15 @@ class SiteInformation(models.Model):
 
     class Meta:
         verbose_name = _('site information')
+
+
+class PersonalInfo(models.Model):
+    content = MarkdownxField(_('markdown content'), max_length=1024)
+    content_html = models.TextField(_('html content'))
+
+    def save(self, *args, **kwargs):
+        self.content_html = f'<div class="markdownx-preview">{markdownify(self.content)}</div>'
+        super(PersonalInfo, self).save(*args, **kwargs)
 
 
 def update_site_info(sender, instance, *args, **kwargs):

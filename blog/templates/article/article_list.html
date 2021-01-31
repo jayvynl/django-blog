@@ -26,7 +26,7 @@
     {% endif %}
     {% if page_obj.has_previous %}
         <span class="page" id="previous-page">
-            <a href="{{ list_url }}&page={{ page_obj.previous_page_number }}">
+            <a href="{{ list_url }}?page={{ page_obj.previous_page_number }}">
                 {{ page_obj.previous_page_number }}
             </a>
         </span>
@@ -34,14 +34,14 @@
     <span class="page" id="current-page">{{ page_obj.number }}</span>
     {% if page_obj.has_next %}
         <span class="page" id="next-page">
-            <a href="{{ list_url }}&page={{ page_obj.next_page_number }}">
+            <a href="{{ list_url }}?page={{ page_obj.next_page_number }}">
                 {{ page_obj.next_page_number }}
             </a>
         </span>
     {% endif %}
     {% if page_obj.number != paginator.num_pages %}
         <span class="page" id="last-page">
-            <a href="{{ list_url }}&page={{ paginator.num_pages }}">
+            <a href="{{ list_url }}?page={{ paginator.num_pages }}">
                 {% translate 'Last' %}
             </a>
         </span>

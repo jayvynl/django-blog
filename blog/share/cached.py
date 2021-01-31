@@ -13,7 +13,11 @@ def set_site_information(**kwargs):
 
 def load_site_information():
     from .models import SiteInformation
-    site_info_model_instance = SiteInformation.objects.get_or_create(id=1)
+    qs = SiteInformation.objects.all()
+    if qs:
+        site_info_model_instance = qs[0]
+    else:
+        site_info_model_instance = SiteInformation.objects.create()
     site_info = {
         'site_name': site_info_model_instance.name,
         'site_register': site_info_model_instance.register,
