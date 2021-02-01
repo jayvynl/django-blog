@@ -25,7 +25,7 @@
                 {% translate 'tags' %}
                 {% for tag in article.tags.all %}
                 <ul>
-                    <li><a href="{% url 'article:tag' pk=tag.pk %}">{{ tag.name }}</a></li>
+                    <li><a href="{% url 'article:tag-detail' pk=tag.pk %}">{{ tag.name }}</a></li>
                 </ul>
                 {% endfor %}
             </span>

@@ -7,7 +7,7 @@ from share.models import PersonalInfo
 def set_timezone(request):
     if request.method == 'POST':
         request.session['django_timezone'] = request.POST['timezone']
-        redirect_to = request.POST.get('next', '/')
+        redirect_to = request.POST.get('next', request.META.get('HTTP_REFERER', '/'))
         return redirect(redirect_to)
 
 

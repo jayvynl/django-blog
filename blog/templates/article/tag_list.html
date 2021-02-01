@@ -4,7 +4,7 @@
 {% block title %}{% translate 'Tags' %}{% endblock %}
 
 {% block content %}
-    <div id="tag-list">
+    <div class="tag-list">
     {% for tag in tags %}
         <span class="tag-item">
             <a href="{% url 'article:tag-detail' pk=tag.id %}">{{ tag.name }}</a>({{ tag.articles.count }})

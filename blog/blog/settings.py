@@ -52,6 +52,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'share.middlewares.TimezoneMiddleware',
 ]
 
 ROOT_URLCONF = 'blog.urls'
@@ -60,7 +61,7 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [os.path.join(BASE_DIR, 'templates')],
-        'APP_DIRS': False,
+        'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
                 'django.template.context_processors.debug',
@@ -117,7 +118,7 @@ LANGUAGES = (
     ('zh-hans', 'Chinese')
 )
 
-LANGUAGE_CODE = 'zh-hans'
+LANGUAGE_CODE = 'en'
 
 TIME_ZONE = 'Asia/Shanghai'
 
@@ -129,10 +130,6 @@ USE_TZ = True
 
 LOCALE_PATHS = [os.path.join(BASE_DIR, 'locale')]
 
-DATE_FORMAT = 'Y-m-d'
-DATETIME_FORMAT = 'Y-m-d H:i'
-SHORT_DATE_FORMAT = 'Y-m-d'
-SHORT_DATETIME_FORMAT = 'Y-m-d H:i'
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
@@ -143,6 +140,8 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static')
 ]
 
+
+# auth
 LOGIN_REDIRECT_URL = 'user:personal-profile'
 
 
@@ -156,7 +155,6 @@ MARKDOWNX_MARKDOWN_EXTENSIONS = [
 
 
 # Project specific settings
-
 TIMEZONES = [
     'Etc/GMT+12', 'Pacific/Pago_Pago', 'Pacific/Honolulu', 'America/Juneau',
     'America/Los_Angeles', 'America/Phoenix', 'America/Chicago', 'America/New_York',

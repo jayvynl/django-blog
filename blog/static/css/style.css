@@ -5,64 +5,75 @@
 
 body{
     width: 900px;
+    background-color: white;
+    margin: 0 auto;
 }
-#header{
+.header{
+    height: 90px;
+    background-color: aliceblue;
+}
+.header-toolbar{
+    height: 10px;
+}
+.header-toolbar form{
+    float: right;
+    margin-left: 10px;
+}
+.site-name{
     height: 50px;
-    margin: 0 10px;
-    padding: 10px;
-    background-color: #cccccc;
+    margin-left: 40px;
+    font-weight: bold;
+    font-size: 30px;
 }
-#site-name{
+.main-nav{
+    height: 30px;
+    background-color: lightblue;
+}
+.main-nav ul{
+    margin-left: 40px;
+    list-style-type: none;
     float: left;
 }
-#set-lan, #set-tz{
-    float: right;
+.main-nav li{
+    margin-right: 20px;
+    display: inline;
 }
-#nav{
-    height: 50px;
-    margin: 10px;
-    padding: 10px;
-    background-color: #cccccc;
-}
-#nav ul{
-    list-style: none;
-}
-#nav ul li{
-    height: auto;
-    width: 100px;
-}
-#nav li a{
+.main-nav a{
+    font-weight: bold;
+    font-size: 20px;
     text-decoration: none;
-    font-size: 40px;
-    position: center;
 }
-#nav form{
+.main-nav a:hover, .main-nav a:active{
+    background-color: cadetblue;
+}
+.main-nav form{
     float: right;
 }
-#footer{
+.main{
+    min-height: 800px;
+}
+.footer{
     height: 50px;
-    margin: 10px 10px 0 10px;
-    padding: 5px;
     background-color: lavender;
 }
-#footer p{
-    position: center;
+.footer-wrapper{
+    margin: 0 auto;
+    text-align: center;
 }
-#archive-index{
+.archive-index{
     width: 600px;
-    position: center;
+    margin: 0 auto;
 }
 .archive-item{
     margin: 10px;
 }
 .article-title{
-    margin: 20px;
-    position: center;
+    margin: 20px auto;
 }
 .article-meta div{
     margin: 0 5px;
 }
-#article-list{
+.article-list{
     list-style: none;
 }
 .article-item{
@@ -72,9 +83,9 @@ body{
     float: right;
 }
 
-#archive-header,
-#search-header,
-#tag-header{
+.archive-header,
+.search-header,
+.tag-header{
     margin: 20px;
 }
 

@@ -27,5 +27,5 @@ urlpatterns = [
     path('settz/', set_timezone, name='set_timezone'),
     path('setlang/', set_language, name='set_language'),
     path('article/', include('article.urls')),
-    path('markdownx', include('markdownx.urls'))
+    path('markdownx/', include('markdownx.urls'))
 ]

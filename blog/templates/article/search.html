@@ -5,9 +5,9 @@
 {% block title %}{% translate 'Search results: ' %}{{ search }}{% endblock %}
 
 {% block content %}
-    <h2 id="search-header">{{ search }}</h2>
+    <h2 class="search-header">{{ search }}</h2>
     {% for article in articles %}
-        <ul id="article-list">
+        <ul class="article-list">
             <li class="article-item">
                 <a href="{% url 'article:detail' pk=article.id %}">{{ article.title }}</a>
                 <time itemprop="pubdate" datetime="{{ article.posted_at }}">
@@ -16,32 +16,32 @@
             </li>
         </ul>
     {% endfor %}
-    <div id="pages">
+    <div class="pages">
     {% url 'article:search' pk=tag.id as search_url %}
     {% if page_obj.number != 1 %}
-        <span class="page" id="first-page">
+        <span class="page first-page">
             <a href="{{ search_url }}?q={{ search }}">
                 {% translate 'First' %}
             </a>
         </span>
     {% endif %}
     {% if page_obj.has_previous %}
-        <span class="page" id="previous-page">
+        <span class="page previous-page">
             <a href="{{ search_url }}?q={{ search }}&page={{ page_obj.previous_page_number }}">
                 {{ page_obj.previous_page_number }}
             </a>
         </span>
     {% endif %}
-    <span class="page" id="current-page">{{ page_obj.number }}</span>
+    <span class="page" class="current-page">{{ page_obj.number }}</span>
     {% if page_obj.has_next %}
-        <span class="page" id="next-page">
+        <span class="page next-page">
             <a href="{{ search_url }}?q={{ search }}&page={{ page_obj.next_page_number }}">
                 {{ page_obj.next_page_number }}
             </a>
         </span>
     {% endif %}
     {% if page_obj.number != paginator.num_pages %}
-        <span class="page" id="last-page">
+        <span class="page last-page">
             <a href="{{ search_url }}?q={{ search }}&page={{ paginator.num_pages }}">
                 {% translate 'Last' %}
             </a>

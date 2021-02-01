@@ -1,6 +1,6 @@
 venv
 .idea
 *.pyc
-blog/db.sqlite3
+db.sqlite3
 statics
 */*/migrations/[0-9]*.py
