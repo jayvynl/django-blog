@@ -1,10 +1,10 @@
 {% extends "base.html" %}
 {% load i18n tz %}
 
-{% block title %}{{ tag.name }}{% endblock %}
+{% block title %}{{ year.year }}{% translate 'Archives' %}{% endblock %}
 
 {% block content %}
-<h2 class="sub-page-title">{{ tag.name }}</h2>
+<h2 class="sub-page-title">{{ year.year }}{% translate 'Articles' %}</h2>
 <ul class="article-list">
     {% for article in articles %}
         <li class="article-item">
@@ -15,6 +15,6 @@
         </li>
     {% endfor %}
 </ul>
-{% url 'article:tag-detail' pk=tag.id as list_url %}
+{% url 'article:year-archive' year=year.year as list_url %}
 {% include 'page_nav.html' %}
 {% endblock %}

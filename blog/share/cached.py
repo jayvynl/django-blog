@@ -20,7 +20,5 @@ def load_site_information():
         site_info_model_instance = SiteInformation.objects.create()
     site_info = {
         'site_name': site_info_model_instance.name,
-        'site_register': site_info_model_instance.register,
-        'site_register_url': site_info_model_instance.register_url
     }
     set_site_information(**site_info)

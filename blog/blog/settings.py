@@ -136,14 +136,7 @@ LOCALE_PATHS = [os.path.join(BASE_DIR, 'locale')]
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'statics')
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'static')
-]
-
-
-# auth
-LOGIN_REDIRECT_URL = 'user:personal-profile'
-
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 
 # Markdownx
 # https://neutronx.github.io/django-markdownx/customization/
@@ -163,3 +156,4 @@ TIMEZONES = [
     'Indian/Maldives', 'Asia/Urumqi', 'Asia/Bangkok', 'Asia/Shanghai',
     'Asia/Tokyo', 'Australia/Sydney', 'Asia/Sakhalin', 'Pacific/Auckland'
 ]
+PAGE_SIZE = 10

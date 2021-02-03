@@ -10,32 +10,33 @@
         <link rel="stylesheet" type="text/css" href="{% static 'css/codehilite.css' %}">
     </head>
     <body>
+    <div class="header-container">
         <header class="header">
             <div class="header-toolbar">
                 <form id="set-lan" action="{% url 'set_language' %}" method="post">
                     {% csrf_token %}
                     <input name="next" type="hidden" value="{{ request.path }}">
-                    <label for="language">{% translate 'Language:' %}</label>
+{#                    <label for="language">{% translate 'Language:' %}</label>#}
                     <select id="language" name="language">
                         {% get_language_info_list for LANGUAGES as languages %}
                         {% for language in languages %}
                         <option value="{{ language.code }}"{% if language.code == LANGUAGE_CODE %} selected{% endif %}>
-                        {{ language.name_local }} ({{ language.code }})
+                        {{ language.name_local }}
                         </option>
                         {% endfor %}
                     </select>
-                    <input type="submit" value="{% translate 'Set' %}">
+                    <input type="submit" value="{% translate 'Set language' %}">
                 </form>
                 <form id="set-tz" action="{% url 'set_timezone' %}" method="POST">
                     {% csrf_token %}
                     <input name="next" type="hidden" value="{{ request.path }}">
-                    <label for="timezone">{% translate 'Time zone:' %}</label>
+{#                    <label for="timezone">{% translate 'Time zone:' %}</label>#}
                     <select id="timezone" name="timezone">
                         {% for tz in timezones %}
                         <option value="{{ tz }}"{% if tz == TIME_ZONE %} selected{% endif %}>{{ tz }}</option>
                         {% endfor %}
                     </select>
-                    <input type="submit" value="{% translate 'Set' %}">
+                    <input type="submit" value="{% translate 'Set timezone' %}">
                 </form>
             </div>
             <h1 class="site-name">{{ site_name }}</h1>
@@ -49,6 +50,7 @@
 {#            {% endif %}#}
 {#            </div>#}
             <nav class="main-nav">
+                {% block nav_bar %}
                 <ul>
                     <li><a href="/">{% translate 'Home' %}</a></li>
                     <li><a href="{% url 'article:list' %}">{% translate 'Articles' %}</a></li>
@@ -56,6 +58,7 @@
                     <li><a href="{% url 'article:archive' %}">{% translate 'Archives' %}</a></li>
                     <li><a href="{% url 'about-me' %}">{% translate 'About me' %}</a></li>
                 </ul>
+                {% endblock %}
                 <form method="get" action="{% url 'article:search' %}">
                     <label>
                         <input type="search" name="q" placeholder="{% translate 'Input key words here' %}">
@@ -64,14 +67,16 @@
                 </form>
             </nav>
         </header>
+    </div>
+    <div class="content-container">
         <main class="main">
             {% block content %}{% endblock %}
         </main>
+    </div>
+    <div class="footer-container">
         <footer class="footer">
-            <div class="footer-wrapper">
-                <p>©Copyright 2021-{% now 'Y' %} {{ site_name }}</p>
-                <p><a href="{{ site_register_url }}">{{ site_register }}</a></p>
-            </div>
+            <p>©Copyright 2021-{% now 'Y' %} {{ site_name }}</p>
         </footer>
+    </div>
     </body>
 </html>

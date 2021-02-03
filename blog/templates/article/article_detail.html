@@ -1,5 +1,4 @@
 {% extends "base.html" %}
-
 {% load i18n tz %}
 
 {% block title %}{{ article.title }}{% endblock %}
@@ -10,23 +9,21 @@
         <h2>{{ article.title }}</h2>
         <div class="article-meta">
             <span class="post-time">
-                {% translate 'post at' %}
-                <time itemprop="pubdate" datetime="{{ article.posted_at }}">
-                    {{ article.posted_at|localtime }}
+                <span class="article-meta-key">{% translate 'post at' %}</span>
+                <time class="article-meta-value" itemprop="pubdate" datetime="{{ article.posted_at.isoformat }}">
+                    {{ article.posted_at|localtime|date:'SHORT_DATE_FORMAT' }}
                 </time>
             </span>
             <span class="edit-time">
-                {% translate 'edit at' %}
-                <time datetime="{{ article.edited_at }}">
-                    {{ article.edited_at|localtime }}
+                <span class="article-meta-key">{% translate 'edit at' %}</span>
+                <time class="article-meta-value" datetime="{{ article.edited_at.isoformat }}">
+                    {{ article.edited_at|localtime|date:'SHORT_DATE_FORMAT' }}
                 </time>
             </span>
             <span class="article-tags">
-                {% translate 'tags' %}
+                <span class="article-meta-key">{% translate 'tags' %}</span>
                 {% for tag in article.tags.all %}
-                <ul>
-                    <li><a href="{% url 'article:tag-detail' pk=tag.pk %}">{{ tag.name }}</a></li>
-                </ul>
+                    <a class="article-meta-value" href="{% url 'article:tag-detail' pk=tag.pk %}">{{ tag.name }}</a>
                 {% endfor %}
             </span>
         </div>

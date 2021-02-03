@@ -1,99 +1,126 @@
-*{
+* {
     margin: 0;
     padding: 0;
 }
-
-body{
-    width: 900px;
-    background-color: white;
+/* page width */
+.header,
+.main,
+.footer{
+    max-width: 900px;
     margin: 0 auto;
+    padding: 1em;
+}
+/* header style */
+.header-container{
+    background-color: lightgreen;
 }
 .header{
-    height: 90px;
-    background-color: aliceblue;
-}
-.header-toolbar{
-    height: 10px;
+    padding-bottom: 2.5em;
 }
 .header-toolbar form{
     float: right;
-    margin-left: 10px;
+    margin-left: 2em;
 }
 .site-name{
-    height: 50px;
-    margin-left: 40px;
-    font-weight: bold;
-    font-size: 30px;
-}
-.main-nav{
-    height: 30px;
-    background-color: lightblue;
+    font-size: 2.5em;
+    padding: 0.5em 0.4em;
 }
 .main-nav ul{
-    margin-left: 40px;
     list-style-type: none;
     float: left;
 }
 .main-nav li{
-    margin-right: 20px;
+    padding: 0.5em 1em;
     display: inline;
+}
+.nav-cur{
+    background-color: white;
 }
 .main-nav a{
     font-weight: bold;
-    font-size: 20px;
+    font-size: 1.5em;
     text-decoration: none;
+    color: #666;
 }
-.main-nav a:hover, .main-nav a:active{
-    background-color: cadetblue;
+.main-nav a:hover,
+.main-nav a:active{
+    color: blue;
 }
 .main-nav form{
     float: right;
 }
+/* main content style */
 .main{
-    min-height: 800px;
+    min-height: 600px;
+    margin-top: 1em;
 }
-.footer{
-    height: 50px;
+/* footer style */
+.footer-container{
     background-color: lavender;
 }
-.footer-wrapper{
+.footer{
+    text-align: center;
+}
+.sub-page-title{
+    text-align: center;
+    padding: 1em;
+}
+.archive-index,
+.tag-list{
+    margin: 1em auto;
+    list-style-type: none;
+}
+.archive-item,
+.tag-item{
+    padding: 0.5em;
+    margin: 0.5em;
+    display: inline;
+}
+/* article style */
+.article{
+    padding: 1em;
+    margin-bottom: 2em;
+}
+.article-title{
     margin: 0 auto;
     text-align: center;
 }
-.archive-index{
-    width: 600px;
-    margin: 0 auto;
+.article-meta span{
+    padding: 0.5em;
+    font-size: 0.9em;
 }
-.archive-item{
-    margin: 10px;
+.article-meta-key{
+    color: blue;
 }
-.article-title{
-    margin: 20px auto;
+.article-meta-value{
+    color: green;
 }
-.article-meta div{
-    margin: 0 5px;
+.read-more{
+    text-align: center;
+    font-style: italic;
 }
 .article-list{
     list-style: none;
+    min-height: 600px;
 }
 .article-item{
-    margin: 10px;
+    padding: 1em;
 }
 .article-item time{
     float: right;
 }
-
+.page a{
+    padding: 0.5em;
+    border-color: black;
+    border-width: 3px;
+}
 .archive-header,
 .search-header,
 .tag-header{
-    margin: 20px;
+    margin: 1em;
 }
-
 .article-content-brief{
-    height: 100px;
-    margin: 10px;
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 3;
+    height: 5.5em;
+    margin: 1em;
     overflow: hidden;
 }

@@ -1,15 +1,15 @@
+from django.conf import settings
+from django.db.models import Q
 from django.http import Http404
 from django.views import generic
-from django.db.models import Q
-from article import models
 
-from django.shortcuts import redirect
+from article import models
 
 
 class ArticleList(generic.ListView):
     model = models.Article
     context_object_name = 'articles'
-    paginate_by = 20
+    paginate_by = settings.PAGE_SIZE
     allow_empty = True
 
 
@@ -25,7 +25,7 @@ class TagList(generic.ListView):
 
 class TagDetail(generic.ListView):
     context_object_name = 'articles'
-    paginate_by = 20
+    paginate_by = settings.PAGE_SIZE
     template_name = 'article/tag_detail.html'
     allow_empty = True
 
@@ -42,7 +42,7 @@ class TagDetail(generic.ListView):
 class ArchiveIndex(generic.ArchiveIndexView):
     model = models.Article
     context_object_name = 'articles'
-    # paginate_by = 20
+    # paginate_by = settings.PAGE_SIZE
     date_field = 'posted_at'
     allow_empty = True
 
@@ -50,7 +50,7 @@ class ArchiveIndex(generic.ArchiveIndexView):
 class YearArchive(generic.YearArchiveView):
     model = models.Article
     context_object_name = 'articles'
-    paginate_by = 20
+    paginate_by = settings.PAGE_SIZE
     date_field = 'posted_at'
     allow_empty = True
 
@@ -58,8 +58,9 @@ class YearArchive(generic.YearArchiveView):
 class Search(generic.ListView):
     model = models.Article
     context_object_name = 'articles'
-    paginate_by = 20
+    paginate_by = settings.PAGE_SIZE
     allow_empty = True
+    template_name = 'article/search.html'
 
     def get_queryset(self):
         qs = super(Search, self).get_queryset()
