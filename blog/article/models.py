@@ -10,7 +10,7 @@ class Article(models.Model):
     posted_at = models.DateTimeField(_('posted at'), auto_now_add=True)
     edited_at = models.DateTimeField(_('edited at'), auto_now=True)
     tags = models.ManyToManyField('article.Tag', verbose_name=_('tags'), related_name='articles')
-    content = MarkdownxField(_('markdown content'), max_length=8192)
+    content = MarkdownxField(_('markdown content'))
     content_html = models.TextField(_('html content'), blank=True)
     content_brief = models.TextField(_('brief content'), blank=True, max_length=300)
 
