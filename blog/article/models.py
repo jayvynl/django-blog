@@ -1,8 +1,8 @@
 from django.db import models
+from django.utils.html import strip_tags
 from django.utils.translation import gettext_lazy as _
 from markdownx.models import MarkdownxField
 from markdownx.utils import markdownify
-from django.utils.html import strip_tags
 
 
 class Article(models.Model):
