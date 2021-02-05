@@ -24,6 +24,9 @@ class Article(models.Model):
         self.content_brief = strip_tags(self.content_html)[:300]
         super(Article, self).save(*args, **kwargs)
 
+    def __str__(self):
+        return self.title
+
 
 class Tag(models.Model):
     name = models.CharField(
@@ -38,3 +41,6 @@ class Tag(models.Model):
     class Meta:
         verbose_name = _('tag')
         verbose_name_plural = _('tags')
+
+    def __str__(self):
+        return self.name
