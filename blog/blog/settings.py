@@ -157,3 +157,12 @@ TIMEZONES = [
     'Asia/Tokyo', 'Australia/Sydney', 'Asia/Sakhalin', 'Pacific/Auckland'
 ]
 PAGE_SIZE = 10
+
+
+# Add site specific settings in local_settings.py, for examples:
+# ALLOWED_HOSTS, STATIC_URL, STATIC_ROOT, DATABASES, SECRET_KEY.
+# And don't forget DEBUG = False.
+try:
+    from .local_settings import *
+except ImportError:
+    pass
